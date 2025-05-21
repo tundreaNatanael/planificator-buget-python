@@ -37,3 +37,13 @@ class CVS:
     @classmethod
     def write_entry(cls, categorie, optiune):
         cls.add_entry(categorie, optiune)
+
+    @classmethod
+    def write_buget(self, results):
+        output_file = "buget_generat.csv"
+        columns = ["categorie", "valoare"]
+        with open(output_file, "w", newline="") as file:
+            writer = csv.DictWriter(file, fieldnames=columns)
+            writer.writeheader()
+            writer.writerows(results)
+        print(f"Rezultatele au fost scrise in {output_file}")

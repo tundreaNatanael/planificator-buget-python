@@ -1,4 +1,5 @@
 from cvs_handler import CVS
+import csv
 class EventBudget:
     # Constants
     chirie_fixa = 15000
@@ -58,8 +59,13 @@ class EventBudget:
         kituri = nr_invitati * kit_invitati
         total = cazare + mancare + excursie + kituri
 
-        print(f"cazare:  € {cazare:,.2f}")
-        print(f"mancare:  € {mancare:,.2f}")
-        print(f"excursie:  € {excursie:,.2f}")
-        print(f"kituri:  € {kituri:,.2f}")
-        print(f"Total:  € {total:,.2f}")
+        # Prepare data to write
+        results = [
+            {"categorie": "cazare", "valoare": f"{cazare:.2f}"},
+            {"categorie": "mancare", "valoare": f"{mancare:.2f}"},
+            {"categorie": "excursie", "valoare": f"{excursie:.2f}"},
+            {"categorie": "kituri", "valoare": f"{kituri:.2f}"},
+            {"categorie": "Total", "valoare": f"{total:.2f}"},
+        ]
+
+        CVS.write_buget(results)
