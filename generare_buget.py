@@ -58,6 +58,7 @@ class EventBudget:
         excursie = total_pers * pret_excursie_per_pers
         kituri = nr_invitati * kit_invitati
         total = cazare + mancare + excursie + kituri
+        print("total:   " f"{total:.2f} lei")
 
         # Prepare data to write
         results = [
